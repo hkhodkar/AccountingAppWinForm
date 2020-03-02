@@ -68,7 +68,10 @@
     <Compile Include="Context\Customers.cs">
       <DependentUpon>Accounting_db.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\UnitOfWorks\UnitOfWorks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ICustomerRepository.cs" />
+    <Compile Include="Services\CustomerRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Context\Accounting_db.edmx">
