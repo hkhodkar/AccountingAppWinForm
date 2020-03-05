@@ -1,25 +1,36 @@
 ﻿using Accounting.DataLayer.Repositories;
 using Accounting.DataLayer.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Accounting.DataLayer.Context.UnitOfWorks
 {
     public class UnitOfWorks : IDisposable
     {
-         Accounting_DBEntities db = new Accounting_DBEntities();
-         private ICustomerRepository _customerRepository;
+        Accounting_DBEntities db = new Accounting_DBEntities();
+        private ICustomerRepository _customerRepository;
+        private GenericRepository<Accounting> _accountingRepo;
 
-        public ICustomerRepository CustomerRepository {
-            get {
-                if(_customerRepository == null)
+        public ICustomerRepository CustomerRepository
+        {
+            get
+            {
+                if (_customerRepository == null)
                 {
                     _customerRepository = new CustomerRepository(db);
                 }
                 return _customerRepository;
+            }
+        }
+
+        public GenericRepository<Accounting> AccountingRepo
+        {
+            get
+            {
+                if (_accountingRepo == null)
+                {
+                    _accountingRepo = new GenericRepository<Accounting>(db);
+                }
+                return _accountingRepo;
             }
         }
 
