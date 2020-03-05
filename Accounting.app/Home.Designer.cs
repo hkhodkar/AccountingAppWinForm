@@ -46,6 +46,7 @@
             this.ShowCustomers.Image = global::Accounting.app.Properties.Resources._1371476468_preferences_contact_list;
             resources.ApplyResources(this.ShowCustomers, "ShowCustomers");
             this.ShowCustomers.Name = "ShowCustomers";
+            this.ShowCustomers.Click += new System.EventHandler(this.ShowCustomers_Click);
             // 
             // Home
             // 
