@@ -74,5 +74,23 @@ namespace Accounting.app
                 RtlMessageBox.Show("لطفا شخصی را انتخاب کنید");
             }
         }
+
+        private void EditCustomer_Click(object sender, EventArgs e)
+        {
+            if (dgvCustomer.CurrentRow != null)
+            {
+                var customerID = int.Parse(dgvCustomer.CurrentRow.Cells[0].Value.ToString());
+                var frmaddOrEditCustomer = new frmAddOrEditCustomer();
+                frmaddOrEditCustomer.customerID = customerID;
+                if (frmaddOrEditCustomer.ShowDialog() == DialogResult.OK)
+                {
+                    BindGrid();
+                }
+            }
+            else
+            {
+                MessageBox.Show("لطفا شخصی را انتخاب نمایید", "توجه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            };
+        }
     }
 }

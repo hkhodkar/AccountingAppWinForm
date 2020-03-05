@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.AddCustomer = new System.Windows.Forms.ToolStripButton();
+            this.EditCustomer = new System.Windows.Forms.ToolStripButton();
+            this.DeleteCustomer = new System.Windows.Forms.ToolStripButton();
+            this.RefreshGrid = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.TxtFilter = new System.Windows.Forms.ToolStripTextBox();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
@@ -36,10 +40,6 @@
             this.نام = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddCustomer = new System.Windows.Forms.ToolStripButton();
-            this.EditCustomer = new System.Windows.Forms.ToolStripButton();
-            this.DeleteCustomer = new System.Windows.Forms.ToolStripButton();
-            this.RefreshGrid = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.SuspendLayout();
@@ -58,6 +58,51 @@
             this.toolStrip1.Size = new System.Drawing.Size(584, 62);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // AddCustomer
+            // 
+            this.AddCustomer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddCustomer.Image = global::Accounting.app.Properties.Resources._1371475930_filenew;
+            this.AddCustomer.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.AddCustomer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddCustomer.Name = "AddCustomer";
+            this.AddCustomer.Size = new System.Drawing.Size(74, 59);
+            this.AddCustomer.Text = "شخص جدید";
+            this.AddCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.AddCustomer.Click += new System.EventHandler(this.AddCustomer_Click);
+            // 
+            // EditCustomer
+            // 
+            this.EditCustomer.Image = global::Accounting.app.Properties.Resources._1371475973_document_edit;
+            this.EditCustomer.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.EditCustomer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.EditCustomer.Name = "EditCustomer";
+            this.EditCustomer.Size = new System.Drawing.Size(83, 59);
+            this.EditCustomer.Text = "ویرایش شخص";
+            this.EditCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.EditCustomer.Click += new System.EventHandler(this.EditCustomer_Click);
+            // 
+            // DeleteCustomer
+            // 
+            this.DeleteCustomer.Image = global::Accounting.app.Properties.Resources._1371476007_Close_Box_Red;
+            this.DeleteCustomer.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.DeleteCustomer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DeleteCustomer.Name = "DeleteCustomer";
+            this.DeleteCustomer.Size = new System.Drawing.Size(72, 59);
+            this.DeleteCustomer.Text = "حذف شخص";
+            this.DeleteCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.DeleteCustomer.Click += new System.EventHandler(this.DeleteCustomer_Click);
+            // 
+            // RefreshGrid
+            // 
+            this.RefreshGrid.Image = global::Accounting.app.Properties.Resources._1371476368_Synchronize;
+            this.RefreshGrid.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.RefreshGrid.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RefreshGrid.Name = "RefreshGrid";
+            this.RefreshGrid.Size = new System.Drawing.Size(60, 59);
+            this.RefreshGrid.Text = "بروزرسانی";
+            this.RefreshGrid.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.RefreshGrid.Click += new System.EventHandler(this.RefreshGrid_Click);
             // 
             // toolStripLabel1
             // 
@@ -117,50 +162,6 @@
             this.Mobile.HeaderText = "موبایل";
             this.Mobile.Name = "Mobile";
             this.Mobile.ReadOnly = true;
-            // 
-            // AddCustomer
-            // 
-            this.AddCustomer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCustomer.Image = global::Accounting.app.Properties.Resources._1371475930_filenew;
-            this.AddCustomer.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.AddCustomer.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddCustomer.Name = "AddCustomer";
-            this.AddCustomer.Size = new System.Drawing.Size(74, 59);
-            this.AddCustomer.Text = "شخص جدید";
-            this.AddCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.AddCustomer.Click += new System.EventHandler(this.AddCustomer_Click);
-            // 
-            // EditCustomer
-            // 
-            this.EditCustomer.Image = global::Accounting.app.Properties.Resources._1371475973_document_edit;
-            this.EditCustomer.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.EditCustomer.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.EditCustomer.Name = "EditCustomer";
-            this.EditCustomer.Size = new System.Drawing.Size(83, 59);
-            this.EditCustomer.Text = "ویرایش شخص";
-            this.EditCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // DeleteCustomer
-            // 
-            this.DeleteCustomer.Image = global::Accounting.app.Properties.Resources._1371476007_Close_Box_Red;
-            this.DeleteCustomer.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.DeleteCustomer.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.DeleteCustomer.Name = "DeleteCustomer";
-            this.DeleteCustomer.Size = new System.Drawing.Size(72, 59);
-            this.DeleteCustomer.Text = "حذف شخص";
-            this.DeleteCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.DeleteCustomer.Click += new System.EventHandler(this.DeleteCustomer_Click);
-            // 
-            // RefreshGrid
-            // 
-            this.RefreshGrid.Image = global::Accounting.app.Properties.Resources._1371476368_Synchronize;
-            this.RefreshGrid.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.RefreshGrid.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.RefreshGrid.Name = "RefreshGrid";
-            this.RefreshGrid.Size = new System.Drawing.Size(60, 59);
-            this.RefreshGrid.Text = "بروزرسانی";
-            this.RefreshGrid.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.RefreshGrid.Click += new System.EventHandler(this.RefreshGrid_Click);
             // 
             // frmCustomers
             // 

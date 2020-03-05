@@ -1,14 +1,7 @@
 ﻿using Accounting.DataLayer.Context;
 using Accounting.DataLayer.Context.UnitOfWorks;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ValidationComponents;
 
@@ -16,6 +9,7 @@ namespace Accounting.app
 {
     public partial class frmAddOrEditCustomer : Form
     {
+        public int customerID = 0;
         public frmAddOrEditCustomer()
         {
             InitializeComponent();
@@ -56,10 +50,37 @@ namespace Accounting.app
                 };
                 using (var uof = new UnitOfWorks())
                 {
-                    uof.CustomerRepository.InsertCustomers(customer);
+                    if (customerID == 0)
+                    {
+                        uof.CustomerRepository.InsertCustomers(customer);
+                    }
+                    else
+                    {
+                        customer.CustomerID = customerID;
+                        uof.CustomerRepository.Update(customer);
+                    }
                     uof.Save();
                 }
                 DialogResult = DialogResult.OK;
+            }
+        }
+
+        private void frmAddOrEditCustomer_Load(object sender, EventArgs e)
+        {
+            if (customerID != 0)
+            {
+                this.Text = "ویرایش شخص";
+                this.btnSave.Text = "ویرایش";
+
+                using (var uow = new UnitOfWorks())
+                {
+                    var customer = uow.CustomerRepository.GetById(customerID);
+                    txtFullName.Text = customer.FullName;
+                    txtMobile.Text = customer.Mobile;
+                    txtEmail.Text = customer.Email;
+                    txtAddress.Text = customer.CustomerAddress;
+                    pcCustomer.ImageLocation = Application.StartupPath + "/Images/Customers/" + customer.CustomerImage;
+                }
             }
         }
     }
