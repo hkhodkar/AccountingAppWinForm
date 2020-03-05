@@ -50,11 +50,13 @@ namespace Accounting.DataLayer.Services
             Delete(customer);
         }
 
-        public void Save()
+  
+        public IEnumerable<Customers> FilterdCustomer(string filterText)
         {
-            db.SaveChanges();
+           return db.Customers.Where(
+                                c => c.FullName.Contains(filterText) || 
+                                c.Mobile.Contains(filterText) || 
+                                c.Email.Contains(filterText)).ToList();
         }
-
-
     }
 }

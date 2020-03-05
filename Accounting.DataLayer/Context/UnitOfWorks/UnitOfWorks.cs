@@ -23,6 +23,12 @@ namespace Accounting.DataLayer.Context.UnitOfWorks
             }
         }
 
+        public void Save()
+        {
+            db.SaveChanges();
+        }
+
+
         public void Dispose()
         {
             db.Dispose();
