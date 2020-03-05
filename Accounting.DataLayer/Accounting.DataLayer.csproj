@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\Accounting.cs">
+      <DependentUpon>Accounting_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\AccountingType.cs">
+      <DependentUpon>Accounting_db.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Accounting_db.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -72,6 +78,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ICustomerRepository.cs" />
     <Compile Include="Services\CustomerRepository.cs" />
+    <Compile Include="Services\GenericRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Context\Accounting_db.edmx">
