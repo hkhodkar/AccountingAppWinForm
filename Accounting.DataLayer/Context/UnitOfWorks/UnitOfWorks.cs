@@ -9,6 +9,7 @@ namespace Accounting.DataLayer.Context.UnitOfWorks
         Accounting_DBEntities db = new Accounting_DBEntities();
         private ICustomerRepository _customerRepository;
         private GenericRepository<Accounting> _accountingRepo;
+        private GenericRepository<Users> _userRepo;
 
         public ICustomerRepository CustomerRepository
         {
@@ -31,6 +32,18 @@ namespace Accounting.DataLayer.Context.UnitOfWorks
                     _accountingRepo = new GenericRepository<Accounting>(db);
                 }
                 return _accountingRepo;
+            }
+        }
+
+        public GenericRepository<Users> Userrepository
+        {
+            get
+            {
+                if(_userRepo == null)
+                {
+                    _userRepo = new GenericRepository<Users>(db);
+                }
+                return _userRepo;
             }
         }
 

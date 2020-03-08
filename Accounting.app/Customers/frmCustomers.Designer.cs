@@ -112,6 +112,7 @@
             // 
             // TxtFilter
             // 
+            this.TxtFilter.BackColor = System.Drawing.SystemColors.Window;
             this.TxtFilter.Name = "TxtFilter";
             this.TxtFilter.Size = new System.Drawing.Size(100, 62);
             this.TxtFilter.TextChanged += new System.EventHandler(this.FilterCustomer_TextChanged);
@@ -121,6 +122,7 @@
             this.dgvCustomer.AllowUserToAddRows = false;
             this.dgvCustomer.AllowUserToDeleteRows = false;
             this.dgvCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCustomer.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CustomerId,

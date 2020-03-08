@@ -34,6 +34,14 @@
           <Property Name="CustomerAddress" Type="nvarchar" MaxLength="500" />
           <Property Name="CustomerImage" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="150" />
+          <Property Name="userPassword" Type="nvarchar" MaxLength="150" />
+        </EntityType>
         <Association Name="FK_Acc_cus">
           <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
           <End Role="Accounting" Type="Self.Accounting" Multiplicity="*" />
@@ -62,6 +70,7 @@
           <EntitySet Name="Accounting" EntityType="Self.Accounting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountingType" EntityType="Self.AccountingType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Acc_cus" Association="Self.FK_Acc_cus">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Accounting" EntitySet="Accounting" />
@@ -99,6 +108,7 @@
             <End Role="AccountingType" EntitySet="AccountingType" />
             <End Role="Accounting" EntitySet="Accounting" />
           </AssociationSet>
+          <EntitySet Name="Users" EntityType="Accounting_DBModel.Users" />
         </EntityContainer>
         <EntityType Name="Accounting">
           <Key>
@@ -145,6 +155,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="userPassword" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -180,6 +198,15 @@
               <MappingFragment StoreEntitySet="AccountingType">
                 <ScalarProperty Name="TypeTitle" ColumnName="TypeTitle" />
                 <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Accounting_DBModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

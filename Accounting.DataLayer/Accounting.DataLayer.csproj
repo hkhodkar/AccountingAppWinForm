@@ -75,6 +75,9 @@
       <DependentUpon>Accounting_db.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\UnitOfWorks\UnitOfWorks.cs" />
+    <Compile Include="Context\Users.cs">
+      <DependentUpon>Accounting_db.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ICustomerRepository.cs" />
     <Compile Include="Services\CustomerRepository.cs" />
@@ -107,6 +110,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ViewModels\ViewModels.csproj">
+      <Project>{2bd8ecb1-4c7f-4fe9-b9f4-15a1c4b6445c}</Project>
+      <Name>ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

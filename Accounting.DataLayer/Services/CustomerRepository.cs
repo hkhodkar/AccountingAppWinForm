@@ -1,11 +1,9 @@
 ﻿using Accounting.DataLayer.Context;
 using Accounting.DataLayer.Repositories;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ViewModels.Customers;
 
 namespace Accounting.DataLayer.Services
 {
@@ -21,6 +19,24 @@ namespace Accounting.DataLayer.Services
         public List<Customers> GettAll()
         {
             return db.Customers.ToList();
+        }
+
+        public List<CustomersViewModel> GetCustomerNames(string filter = "")
+        {
+            if (filter == "")
+            {
+                return db.Customers.Select(c => new CustomersViewModel()
+                {
+                    CustomerID = c.CustomerID,
+                    FullName = c.FullName
+                }).ToList();
+            }
+            return db.Customers.Where(c => c.FullName.Contains(filter))
+                               .Select(c => new CustomersViewModel()
+                               {
+                                   FullName = c.FullName,
+                                   CustomerID = c.CustomerID
+                               }).ToList();
         }
 
         public Customers GetById(int id)
@@ -50,13 +66,18 @@ namespace Accounting.DataLayer.Services
             Delete(customer);
         }
 
-  
+
         public IEnumerable<Customers> FilterdCustomer(string filterText)
         {
-           return db.Customers.Where(
-                                c => c.FullName.Contains(filterText) || 
-                                c.Mobile.Contains(filterText) || 
-                                c.Email.Contains(filterText)).ToList();
+            return db.Customers.Where(
+                                 c => c.FullName.Contains(filterText) ||
+                                 c.Mobile.Contains(filterText) ||
+                                 c.Email.Contains(filterText)).ToList();
+        }
+
+        public string GetCustomerNameById(int customerID)
+        {
+            return db.Customers.Where(c => c.CustomerID == customerID).Select(c => c.FullName).SingleOrDefault();
         }
     }
 }
