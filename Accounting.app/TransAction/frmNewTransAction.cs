@@ -18,6 +18,8 @@ namespace Accounting.app.Accounting
         {
             using (var uow = new UnitOfWorks())
             {
+                dgvTransAction.DefaultCellStyle.SelectionBackColor = dgvTransAction.DefaultCellStyle.BackColor;
+                dgvTransAction.DefaultCellStyle.SelectionForeColor = dgvTransAction.DefaultCellStyle.ForeColor;
                 dgvTransAction.AutoGenerateColumns = false;
                 dgvTransAction.DataSource = uow.CustomerRepository.GetCustomerNames();
                 if (accountingId != 0)
